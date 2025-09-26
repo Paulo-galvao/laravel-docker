@@ -1,0 +1,9 @@
+p {
+    color: blue;
+}
+
+.content {
+    max-width: 400px;
+    max-height: 37px;
+    overflow: hidden;
+}
