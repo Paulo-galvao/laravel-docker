@@ -27,5 +27,5 @@ COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 # Expor porta 80 (HTTP)
 EXPOSE 80
 
-# Iniciar PHP-FPM e Nginx
-CMD service php8.2-fpm start && nginx -g "daemon off;"
+# Iniciar PHP-FPM em primeiro plano e Nginx em foreground
+CMD php-fpm -F & nginx -g "daemon off;"
