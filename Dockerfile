@@ -21,6 +21,14 @@ RUN composer install --no-dev --optimize-autoloader
 # Permissões
 RUN chown -R www-data:www-data storage bootstrap/cache
 
+# Instalar Node.js e npm
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Instalar dependências JS e buildar assets
+RUN npm install
+RUN npm run build
+
 # Copiar configuração do Nginx
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
